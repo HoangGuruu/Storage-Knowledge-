@@ -1,0 +1,115 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Acess EC2') {
+            steps {
+                script {
+                    sshagent(credentials: ['Instance-key']) {
+                        sh """
+                            ssh -o StrictHostKeyChecking=no ubuntu@3.84.192.20 '
+                            docker ps
+                            
+                            '
+                            
+                        """
+                        withCredentials([usernamePassword(credentialsId: 'hoangguruu', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                            sh "git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/eks-deploy.git"
+                            dir('deploy') {
+                              sh "ls"
+                              
+                              sh "git config user.email nthoangthcs@gmail.com"
+                              sh "git config user.name HoangGuruu"
+                              
+                              sh "cat deployment.yaml"
+                            }
+                        }
+                        withCredentials([usernamePassword(credentialsId: 'env-api', passwordVariable: 'NEXT_PUBLIC_RAPID_API_KEY', usernameVariable: 'NEXT_PUBLIC_IMAGIN_API_KEY')]) {
+                          sh '''
+                              echo "NEXT_PUBLIC_RAPID_API_KEY=${NEXT_PUBLIC_RAPID_API_KEY}" > .env
+                              echo "NEXT_PUBLIC_IMAGIN_API_KEY=${NEXT_PUBLIC_IMAGIN_API_KEY}" >> .env
+                          '''
+                }
+
+                        
+                    }
+                }
+            }
+        }
+
+    stage('Build-Docker-Image') {
+      steps {
+        container('docker') {
+          script {
+                withCredentials([usernamePassword(credentialsId: 'env-api', passwordVariable: 'NEXT_PUBLIC_RAPID_API_KEY', usernameVariable: 'NEXT_PUBLIC_IMAGIN_API_KEY')]) {
+                    sh '''
+                        echo "NEXT_PUBLIC_RAPID_API_KEY=${NEXT_PUBLIC_RAPID_API_KEY}" > .env
+                        echo "NEXT_PUBLIC_IMAGIN_API_KEY=${NEXT_PUBLIC_IMAGIN_API_KEY}" >> .env
+                    '''
+                }
+            }
+          sh "ls"
+          sh "chmod 666 /var/run/docker.sock"
+          sh "sudo service docker start"
+          sh "ls"
+          sh "docker build -t hoangguruu/myapp-private:${env.BUILD_NUMBER} ."
+
+        }
+      }
+    }
+
+
+    stage('Login-Into-Docker') {
+      steps {
+        container('docker') {
+          
+          withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+          }
+        }
+      }
+    }
+    stage('Push-Images-Docker-to-DockerHub') {
+      steps {
+        container('docker') {
+          
+          sh "docker push hoangguruu/myapp-private:${env.BUILD_NUMBER}"
+        }
+      }
+    }
+    stage('Update GIT') {
+      steps {
+        script {
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            withCredentials([usernamePassword(credentialsId: 'hoangguruu', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+              //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
+              sh "git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/eks-deploy.git"
+              dir('deploy') {
+                sh "ls"
+                
+                sh "git config user.email nthoangthcs@gmail.com"
+                sh "git config user.name HoangGuruu"
+                
+                sh "cat deployment.yaml"
+                sh "sed -i 's+hoangguruu/myapp-private.*+hoangguruu/myapp-private:${env.BUILD_NUMBER}+g' deployment.yaml"
+                sh "cat deployment.yaml"
+                sh "git add ."
+                sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+                sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/eks-deploy.git HEAD:main"
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+  
+  post {
+    always {
+      container('docker') {
+        sh 'docker logout'
+      }
+    }
+  }
+}

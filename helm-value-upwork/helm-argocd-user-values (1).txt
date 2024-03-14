@@ -1,0 +1,1110 @@
+applicationSet:
+  affinity: {}
+  args: []
+  command: []
+  containerPorts:
+    metrics: 8085
+    probe: 8081
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1001
+    seLinuxOptions: null
+    seccompProfile:
+      type: RuntimeDefault
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  defaultArgs:
+    debug: false
+    dryRun: false
+    enableLeaderElection: false
+    policy: sync
+  enabled: false
+  extraArgs: []
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  extraVolumeMounts: []
+  extraVolumes: []
+  livenessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  logFormat: text
+  logLevel: info
+  metrics:
+    enabled: false
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePort: ""
+      port: 8085
+      sessionAffinity: None
+      sessionAffinityConfig: {}
+      type: ClusterIP
+    serviceMonitor:
+      enabled: false
+      honorLabels: false
+      interval: 30s
+      jobLabel: ""
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: 10s
+      selector: {}
+  networkPolicy:
+    allowExternal: true
+    allowExternalEgress: true
+    enabled: true
+    extraEgress: []
+    extraIngress: []
+    ingressNSMatchLabels: {}
+    ingressNSPodMatchLabels: {}
+    kubeAPIServerPorts:
+    - 443
+    - 6443
+    - 8443
+  nodeAffinityPreset:
+    key: ""
+    type: ""
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ""
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1001
+    fsGroupChangePolicy: Always
+    supplementalGroups: []
+    sysctls: []
+  priorityClassName: ""
+  readinessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  replicaCount: 1
+  resources: {}
+  resourcesPreset: none
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalTrafficPolicy: Cluster
+    extraPorts: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: ""
+    port: 7000
+    sessionAffinity: None
+    sessionAffinityConfig: {}
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    automountServiceAccountToken: false
+    create: true
+    name: ""
+  tolerations: []
+  updateStrategy:
+    type: RollingUpdate
+  webhook:
+    ingress:
+      annotations: {}
+      enabled: false
+      extraHosts: []
+      extraPaths: []
+      extraTls: []
+      hostname: ""
+      ingressClassName: ""
+      labels: {}
+      path: /api/webhook
+      pathType: Prefix
+      tls: []
+clusterDomain: cluster.local
+commonAnnotations: {}
+commonLabels: {}
+config:
+  clusterCredentials: []
+  createExtraKnownHosts: true
+  existingStylesConfigmap: ""
+  extraKnownHosts: ""
+  gpgKeys: {}
+  knownHosts: |
+    bitbucket.org ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAubiN81eDcafrgMeLzaFPsw2kNvEcqTKl/VqLat/MaB33pZy0y3rJZtnqwR2qOOvbwKZYKiEO1O6VqNEBxKvJJelCq0dTXWT5pbO2gDXC6h6QDXCaHo6pOHGPUy+YBaGQRGuSusMEASYiWunYN0vCAI8QaXnWMXNMdFP3jHAJH0eDsoiGnLPBlBp4TNm6rYI74nMzgz3B9IikW4WVK+dc8KZJZWYjAuORU3jc1c/NPskD2ASinf8v3xnfXeukU0sJ5N6m5E8VLjObPEO+mN2t/FZTMZLiFqPWc/ALSqnMnnhwrNi2rbfg/rd/IpL8Le3pSBne8+seeFVBoGqzHM9yXw==
+    github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+    gitlab.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFSMqzJeV9rUzU4kWitGjeR4PWSa29SPqJ1fVkhtj3Hw9xjLVXVYrU9QlYWrOLXBpQ6KWjbjTDTdDkoohFzgbEY=
+    gitlab.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf
+    gitlab.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsj2bNKTBSpIYDEGk9KxsGh3mySTRgMtXL583qmBpzeQ+jqCMRgBqB98u3z++J1sKlXHWfM9dyhSevkMwSbhoR8XIq/U0tCNyokEi/ueaBMCvbcTHhO7FcwzY92WK4Yt0aGROY5qX2UKSeOvuP4D6TPqKF1onrSzH9bx9XUf2lEdWT/ia1NEKjunUqu1xOB/StKDHMoX4/OKyIzuS0q/T1zOATthvasJFoPrAjkohTyaDUz2LN5JoH839hViyEG82yB+MjcFV5MU3N1l1QL3cVUCh93xSaua1N85qivl+siMkPGbO5xR/En4iEY6K2XPASUEMaieWVNTRCtJ4S8H+9
+    ssh.dev.azure.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+    vs-ssh.visualstudio.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7Hr1oTWqNqOlzGJOfGJ4NakVyIzf1rXYd4d7wo6jBlkLvCA4odBlL0mDUyZ0/QUfTTqeu+tm22gOsv+VrVTMk6vwRU75gY/y9ut5Mb3bR5BV58dKXyq9A9UeB5Cakehn5Zgm6x1mKoVyf+FFn26iYqXJRgzIZZcZ5V6hrE0Qg39kZm4az48o0AUbf6Sp4SLdvnuMa2sVNwHBboS7EJkm57XQPVU3/QpyNLHbWDdzwtrlS+ez30S3AdYhLKEOxAG8weOnyrtLJAUen9mTkol8oII1edf7mWWbWVf0nBmly21+nZcmCTISQBtdcyPaEno7fFQMDD26/s0lfKob4Kw8H
+  rbac: {}
+  secret:
+    annotations: {}
+    argocdServerAdminPassword: ""
+    argocdServerAdminPasswordMtime: ""
+    argocdServerTlsConfig:
+      crt: ""
+      key: ""
+    bitbucketServerSecret: ""
+    bitbucketUUID: ""
+    create: true
+    extra: {}
+    githubSecret: ""
+    gitlabSecret: ""
+    gogsSecret: ""
+    repositoryCredentials: {}
+  styles: ""
+  tlsCerts: {}
+controller:
+  affinity: {}
+  args: []
+  automountServiceAccountToken: true
+  clusterAdminAccess: true
+  clusterRoleRules: []
+  command: []
+  containerPorts:
+    controller: 8082
+    metrics: 8082
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1001
+    seLinuxOptions: null
+    seccompProfile:
+      type: RuntimeDefault
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  customStartupProbe: {}
+  defaultArgs:
+    appResyncPeriod: "180"
+    operationProcessors: "10"
+    selfHealTimeout: "5"
+    statusProcessors: "20"
+  extraArgs: []
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  extraVolumeMounts: []
+  extraVolumes: []
+  hostAliases: []
+  initContainers: []
+  lifecycleHooks: {}
+  livenessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  logFormat: text
+  logLevel: info
+  metrics:
+    enabled: false
+    rules:
+      additionalLabels: {}
+      enabled: false
+      namespace: monitoring
+      selector: {}
+      spec: []
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePort: ""
+      port: 8082
+      sessionAffinity: None
+      sessionAffinityConfig: {}
+      type: ClusterIP
+    serviceMonitor:
+      enabled: false
+      honorLabels: false
+      interval: 30s
+      jobLabel: ""
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: 10s
+      selector: {}
+  networkPolicy:
+    allowExternal: true
+    allowExternalEgress: true
+    enabled: true
+    extraEgress: []
+    extraIngress: []
+    ingressNSMatchLabels: {}
+    ingressNSPodMatchLabels: {}
+    kubeAPIServerPorts:
+    - 443
+    - 6443
+    - 8443
+  nodeAffinityPreset:
+    key: ""
+    type: ""
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ""
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1001
+    fsGroupChangePolicy: Always
+    supplementalGroups: []
+    sysctls: []
+  priorityClassName: ""
+  readinessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  replicaCount: 1
+  resources: {}
+  resourcesPreset: none
+  runtimeClassName: ""
+  schedulerName: ""
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalTrafficPolicy: Cluster
+    extraPorts: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: ""
+    port: 8082
+    sessionAffinity: None
+    sessionAffinityConfig: {}
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    automountServiceAccountToken: false
+    create: true
+    name: ""
+  shareProcessNamespace: false
+  sidecars: []
+  startupProbe:
+    enabled: false
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  tolerations: []
+  topologySpreadConstraints: []
+  updateStrategy:
+    type: RollingUpdate
+dex:
+  affinity: {}
+  args: []
+  automountServiceAccountToken: true
+  command: []
+  containerPorts:
+    grpc: 5557
+    http: 5556
+    metrics: 5558
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1001
+    seLinuxOptions: null
+    seccompProfile:
+      type: RuntimeDefault
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  customStartupProbe: {}
+  enabled: false
+  extraArgs: []
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  extraVolumeMounts: []
+  extraVolumes: []
+  hostAliases: []
+  image:
+    debug: false
+    digest: ""
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+    registry: docker.io
+    repository: bitnami/dex
+    tag: 2.38.0-debian-12-r6
+  initContainers: []
+  lifecycleHooks: {}
+  livenessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  metrics:
+    enabled: false
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePort: ""
+      port: 5558
+      sessionAffinity: None
+      sessionAffinityConfig: {}
+      type: ClusterIP
+    serviceMonitor:
+      enabled: false
+      honorLabels: false
+      interval: 30s
+      jobLabel: ""
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: 10s
+      selector: {}
+  networkPolicy:
+    allowExternal: true
+    allowExternalEgress: true
+    enabled: true
+    extraEgress: []
+    extraIngress: []
+    ingressNSMatchLabels: {}
+    ingressNSPodMatchLabels: {}
+    kubeAPIServerPorts:
+    - 443
+    - 6443
+    - 8443
+  nodeAffinityPreset:
+    key: ""
+    type: ""
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ""
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1001
+    fsGroupChangePolicy: Always
+    supplementalGroups: []
+    sysctls: []
+  priorityClassName: ""
+  readinessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  replicaCount: 1
+  resources: {}
+  resourcesPreset: none
+  runtimeClassName: ""
+  schedulerName: ""
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalTrafficPolicy: Cluster
+    extraPorts: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePorts:
+      grpc: ""
+      http: ""
+    ports:
+      grpc: 5557
+      http: 5556
+    sessionAffinity: None
+    sessionAffinityConfig: {}
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    automountServiceAccountToken: false
+    create: true
+    name: ""
+  shareProcessNamespace: false
+  sidecars: []
+  startupProbe:
+    enabled: false
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  tolerations: []
+  topologySpreadConstraints: []
+  updateStrategy:
+    type: RollingUpdate
+externalRedis:
+  existingSecret: ""
+  existingSecretPasswordKey: redis-password
+  host: ""
+  password: ""
+  port: 6379
+extraDeploy: []
+fullnameOverride: ""
+global:
+  imagePullSecrets: []
+  imageRegistry: ""
+  storageClass: ""
+image:
+  debug: false
+  digest: ""
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+  registry: docker.io
+  repository: bitnami/argo-cd
+  tag: 2.10.0-debian-12-r5
+kubeVersion: ""
+nameOverride: ""
+notifications:
+  affinity: {}
+  args: []
+  bots:
+    slack:
+      affinity: {}
+      args: []
+      command: []
+      containerPorts:
+        metrics: 9001
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        enabled: true
+        privileged: false
+        readOnlyRootFilesystem: false
+        runAsGroup: 0
+        runAsNonRoot: true
+        runAsUser: 1001
+        seLinuxOptions: null
+        seccompProfile:
+          type: RuntimeDefault
+      customLivenessProbe: {}
+      customReadinessProbe: {}
+      customStartupProbe: {}
+      enabled: false
+      extraArgs: []
+      extraEnvVars: []
+      extraEnvVarsCM: ""
+      extraEnvVarsSecret: ""
+      extraVolumeMounts: []
+      extraVolumes: []
+      livenessProbe:
+        enabled: true
+        failureThreshold: 3
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      networkPolicy:
+        allowExternal: true
+        allowExternalEgress: true
+        enabled: true
+        extraEgress: []
+        extraIngress: []
+        ingressNSMatchLabels: {}
+        ingressNSPodMatchLabels: {}
+        kubeAPIServerPorts:
+        - 443
+        - 6443
+        - 8443
+      nodeAffinityPreset:
+        key: ""
+        type: ""
+        values: []
+      nodeSelector: {}
+      podAffinityPreset: ""
+      podAnnotations: {}
+      podAntiAffinityPreset: soft
+      podLabels: {}
+      podSecurityContext:
+        enabled: true
+        fsGroup: 1001
+        fsGroupChangePolicy: Always
+        supplementalGroups: []
+        sysctls: []
+      priorityClassName: ""
+      readinessProbe:
+        enabled: true
+        failureThreshold: 3
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources: {}
+      resourcesPreset: none
+      service:
+        annotations: {}
+        clusterIP: ""
+        externalTrafficPolicy: Cluster
+        extraPorts: []
+        loadBalancerIP: ""
+        loadBalancerSourceRanges: []
+        nodePort: ""
+        port: 80
+        sessionAffinity: None
+        sessionAffinityConfig: {}
+        type: LoadBalancer
+      serviceAccount:
+        annotations: {}
+        automountServiceAccountToken: false
+        create: true
+        name: ""
+      startupProbe:
+        enabled: false
+        failureThreshold: 3
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      tolerations: []
+  command: []
+  containerPorts:
+    metrics: 8085
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1001
+    seLinuxOptions: null
+    seccompProfile:
+      type: RuntimeDefault
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  customStartupProbe: {}
+  enabled: false
+  extraArgs: []
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  extraVolumeMounts: []
+  extraVolumes: []
+  livenessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  logFormat: text
+  logLevel: info
+  metrics:
+    enabled: false
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePort: ""
+      port: 8085
+      sessionAffinity: None
+      sessionAffinityConfig: {}
+      type: ClusterIP
+    serviceMonitor:
+      enabled: false
+      honorLabels: false
+      interval: 30s
+      jobLabel: ""
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: 10s
+      selector: {}
+  networkPolicy:
+    allowExternal: true
+    allowExternalEgress: true
+    enabled: true
+    extraEgress: []
+    extraIngress: []
+    ingressNSMatchLabels: {}
+    ingressNSPodMatchLabels: {}
+    kubeAPIServerPorts:
+    - 443
+    - 6443
+    - 8443
+  nodeAffinityPreset:
+    key: ""
+    type: ""
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ""
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1001
+    fsGroupChangePolicy: Always
+    supplementalGroups: []
+    sysctls: []
+  priorityClassName: ""
+  readinessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  resources: {}
+  resourcesPreset: none
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalTrafficPolicy: Cluster
+    extraPorts: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: ""
+    port: 7000
+    sessionAffinity: None
+    sessionAffinityConfig: {}
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    automountServiceAccountToken: false
+    create: true
+    name: ""
+  startupProbe:
+    enabled: false
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  tolerations: []
+  webhook:
+    ingress:
+      annotations: {}
+      enabled: false
+      extraHosts: []
+      extraPaths: []
+      extraTls: []
+      hostname: ""
+      ingressClassName: ""
+      labels: {}
+      path: /api/webhook
+      pathType: Prefix
+      tls: []
+rbac:
+  create: true
+redis:
+  architecture: standalone
+  auth:
+    enabled: true
+    existingSecret: ""
+    existingSecretPasswordKey: redis-password
+  enabled: true
+  image:
+    digest: ""
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+    registry: docker.io
+    repository: bitnami/redis
+    tag: 7.2.4-debian-12-r8
+  nameOverride: ""
+  service:
+    port: 6379
+redisWait:
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1001
+    seLinuxOptions: null
+    seccompProfile:
+      type: RuntimeDefault
+  enabled: true
+  extraArgs: ""
+repoServer:
+  affinity: {}
+  args: []
+  automountServiceAccountToken: true
+  autoscaling:
+    enabled: false
+    maxReplicas: 5
+    minReplicas: 1
+    targetCPU: 50
+    targetMemory: 50
+  command: []
+  containerPorts:
+    metrics: 8084
+    repoServer: 8081
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1001
+    seLinuxOptions: null
+    seccompProfile:
+      type: RuntimeDefault
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  customStartupProbe: {}
+  extraArgs: []
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  extraVolumeMounts: []
+  extraVolumes: []
+  hostAliases: []
+  initContainers: []
+  lifecycleHooks: {}
+  livenessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  logFormat: text
+  logLevel: info
+  metrics:
+    enabled: false
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePort: ""
+      port: 8084
+      sessionAffinity: None
+      sessionAffinityConfig: {}
+      type: ClusterIP
+    serviceMonitor:
+      enabled: false
+      honorLabels: false
+      interval: 30s
+      jobLabel: ""
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: 10s
+      selector: {}
+  networkPolicy:
+    allowExternal: true
+    allowExternalEgress: true
+    enabled: true
+    extraEgress: []
+    extraIngress: []
+    ingressNSMatchLabels: {}
+    ingressNSPodMatchLabels: {}
+    kubeAPIServerPorts:
+    - 443
+    - 6443
+    - 8443
+  nodeAffinityPreset:
+    key: ""
+    type: ""
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ""
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1001
+    fsGroupChangePolicy: Always
+    supplementalGroups: []
+    sysctls: []
+  priorityClassName: ""
+  readinessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  replicaCount: 1
+  resources: {}
+  resourcesPreset: none
+  runtimeClassName: ""
+  schedulerName: ""
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalTrafficPolicy: Cluster
+    extraPorts: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: ""
+    port: 8081
+    sessionAffinity: None
+    sessionAffinityConfig: {}
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    automountServiceAccountToken: false
+    create: true
+    name: ""
+  shareProcessNamespace: false
+  sidecars: []
+  startupProbe:
+    enabled: false
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  tolerations: []
+  topologySpreadConstraints: []
+  updateStrategy:
+    type: RollingUpdate
+server:
+  affinity: {}
+  args: []
+  automountServiceAccountToken: true
+  autoscaling:
+    enabled: false
+    maxReplicas: 5
+    minReplicas: 1
+    targetCPU: 50
+    targetMemory: 50
+  command: []
+  config:
+    application.instanceLabelKey: argocd.argoproj.io/instance
+    dex.config: ""
+    url: '{{ .Values.server.url }}'
+  configEnabled: true
+  containerPorts:
+    http: 8080
+    https: 8443
+    metrics: 8083
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+      - ALL
+    enabled: true
+    privileged: false
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: true
+    runAsUser: 1001
+    seLinuxOptions: null
+    seccompProfile:
+      type: RuntimeDefault
+  customLivenessProbe: {}
+  customReadinessProbe: {}
+  customStartupProbe: {}
+  extraArgs: []
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  extraVolumeMounts: []
+  extraVolumes: []
+  hostAliases: []
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/backend-protocol: HTTP
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    apiVersion: ""
+    enabled: true
+    extraHosts: []
+    extraPaths: []
+    extraRules: []
+    extraTls: []
+    hostname: argocd.hoangguruu.id.vn
+    ingressClassName: ""
+    path: /
+    pathType: ImplementationSpecific
+    secrets: []
+    selfSigned: false
+    tls: true
+  ingressGrpc:
+    annotations: {}
+    apiVersion: ""
+    enabled: false
+    extraHosts: []
+    extraPaths: []
+    extraRules: []
+    extraTls: []
+    hostname: argocd.server.local
+    ingressClassName: ""
+    path: /
+    pathType: ImplementationSpecific
+    secrets: []
+    selfSigned: false
+    tls: false
+  initContainers: []
+  insecure: true
+  lifecycleHooks: {}
+  livenessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  logFormat: text
+  logLevel: info
+  metrics:
+    enabled: false
+    service:
+      annotations: {}
+      clusterIP: ""
+      externalTrafficPolicy: Cluster
+      loadBalancerIP: ""
+      loadBalancerSourceRanges: []
+      nodePort: ""
+      port: 8083
+      sessionAffinity: None
+      sessionAffinityConfig: {}
+      type: ClusterIP
+    serviceMonitor:
+      enabled: false
+      honorLabels: false
+      interval: 30s
+      jobLabel: ""
+      metricRelabelings: []
+      namespace: ""
+      relabelings: []
+      scrapeTimeout: 10s
+      selector: {}
+  networkPolicy:
+    allowExternal: true
+    allowExternalEgress: true
+    enabled: true
+    extraEgress: []
+    extraIngress: []
+    ingressNSMatchLabels: {}
+    ingressNSPodMatchLabels: {}
+    kubeAPIServerPorts:
+    - 443
+    - 6443
+    - 8443
+  nodeAffinityPreset:
+    key: ""
+    type: ""
+    values: []
+  nodeSelector: {}
+  podAffinityPreset: ""
+  podAnnotations: {}
+  podAntiAffinityPreset: soft
+  podLabels: {}
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1001
+    fsGroupChangePolicy: Always
+    supplementalGroups: []
+    sysctls: []
+  priorityClassName: ""
+  readinessProbe:
+    enabled: true
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  replicaCount: 1
+  resources: {}
+  resourcesPreset: none
+  runtimeClassName: ""
+  schedulerName: ""
+  service:
+    annotations: {}
+    clusterIP: ""
+    externalTrafficPolicy: Cluster
+    extraPorts: []
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePorts:
+      http: ""
+      https: ""
+    ports:
+      http: 80
+      https: 443
+    sessionAffinity: None
+    sessionAffinityConfig: {}
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    automountServiceAccountToken: false
+    create: true
+    name: ""
+  shareProcessNamespace: false
+  sidecars: []
+  startupProbe:
+    enabled: false
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 1
+  tolerations: []
+  topologySpreadConstraints: []
+  updateStrategy:
+    type: RollingUpdate
+  url: ""
+volumePermissions:
+  containerSecurityContext:
+    runAsUser: 0
+    seLinuxOptions: null
+  enabled: false
+  image:
+    digest: ""
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+    registry: docker.io
+    repository: bitnami/os-shell
+    tag: 12-debian-12-r15
+  resources: {}
+  resourcesPreset: none
